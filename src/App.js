@@ -3,6 +3,7 @@ import Expenses from './components/expenses/Expenses';
 import './components/expenses/expense_item/ExpenseItem.css';
 import NewExpense from './components/new_expenses/NewExpense';
 import {useEffect, useState} from 'react';
+// import Counter from './Counter';
 
 const DUMMY_DATA = [
   {
@@ -33,7 +34,7 @@ function App() {
   const [isLoading,setIsLoading]= useState(true);
   useEffect(() => {
     setIsLoading(true);
-    fetch('https://jsonplaceholder.typicode.com/todos/1')
+    fetch('https://vehicle-9tfu.onrender.com/api/v1/vehicle',{method:"GET"})
       .then(response => response.json())
       .then(json => {console.log(json)
         setIsLoading(false);
