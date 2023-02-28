@@ -4,23 +4,11 @@ import "./ExpenseItem.css";
 // import { useState } from "react";
 
 const ExpenseItem = (props) => {
-    console.log(props);
-    let{
-         title='',
+  let{
+    title='',
          amount=0,
         date=new Date()
     } = props;
-    // const[title,setTitle]=useState(props.title)
-    // const[amount,setAmount]=useState(props.amount)
-    // const buttonClick = () => {
-    //   setTitle('Updated');
-    //   console.log(title);
-    // }
-    // const buttonClick2 = () => {
-    //   setAmount(1000);
-    //   console.log(amount);
-    // }
-    
   return(
   <div className="expense-item">
         <ExpenseDate date={date} />

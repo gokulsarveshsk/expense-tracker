@@ -4,6 +4,7 @@ import './NewExpense.css'
 
 const NewExpense = (props) => {
     const onSave = (new_expense) => {
+        new_expense.amount = parseInt(new_expense.amount);
         const expense = {
             ...new_expense,
             id: Math.random().toString()

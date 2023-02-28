@@ -3,11 +3,14 @@ import "./Expenses.css";
 import ExpenseItem from "./expense_item/ExpenseItem";
 const Expenses = (props) => {
     const{expenses}=props;
+
+
     
     return (
         <div className="expenses">
           {
             expenses.map((each_expense)=>{
+              console.log(each_expense);
               return(
                 <ExpenseItem
                 key={each_expense.id}

@@ -5,7 +5,7 @@ import NewExpense from './components/new_expenses/NewExpense';
 import {useEffect, useState} from 'react';
 // import Counter from './Counter';
 
-const DUMMY_DATA = [
+var DUMMY_DATA = [
   {
     id: 'e1',
     title: 'Groceries',
@@ -31,12 +31,15 @@ const DUMMY_DATA = [
   },
 ];
 function App() {
+  const[expenseList, setExpensesList] = useState(DUMMY_DATA);
   const [isLoading,setIsLoading]= useState(true);
   useEffect(() => {
     setIsLoading(true);
-    fetch('https://vehicle-9tfu.onrender.com/api/v1/vehicle',{method:"GET"})
+    fetch('https://expense-tracker-api-8ikl.onrender.com/api/v1/expenses',{method:"GET"})
       .then(response => response.json())
-      .then(json => {console.log(json)
+      .then(json => {
+        setExpensesList(json.data);
+        console.log(json.data);
         setIsLoading(false);
       }).catch((error) => {
           setIsLoading(false);
@@ -44,11 +47,17 @@ function App() {
   },[]);
     
     
-  const[expenseList, setExpensesList] = useState(DUMMY_DATA);
+  
   const onAddExpense = (new_expense) => {
-    setExpensesList((prevExpenses) => {
-      return [new_expense,...prevExpenses];
-    });
+    
+console.log(new_expense);
+    fetch('https://expense-tracker-api-8ikl.onrender.com/api/v1/expenses', {  // Enter your IP address here
+
+      method: 'POST', 
+      mode: 'cors', 
+      body: JSON.stringify(new_expense) // body data type must match "Content-Type" header
+
+    })
     // DUMMY_DATA.push(new_expense);
   }
   
